@@ -1,0 +1,1 @@
+_data_collection.py 실행하기전 삭제하세요!!
