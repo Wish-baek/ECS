@@ -26,7 +26,7 @@ x_choice = [i for i in range(circle_size, max_x+1)]
 y_choice = [i for i in range(circle_size, max_y+1)]
 
 webcam = cv2.VideoCapture(1)
-idx = 0 if len(os.listdir('./data/_data')) == 0 else len(os.listdir('./data/_data')) - 1
+idx = 0 if len(os.listdir('./data')) == 0 else len(os.listdir('./data')) - 1
 
 random.shuffle(calibration_coord)
 
@@ -53,10 +53,10 @@ while running:
     elif event.type == KEYUP and event.key == K_SPACE:
         ret, frame = webcam.read()
         # cv2.imshow('frame', frame)
-        out_path = f"./data/_data/{idx}.jpg"
+        out_path = f"./data/{idx}.jpg"
         cv2.imwrite(out_path, frame)
 
-        with open('./data/_data/coordinate.csv', 'a', newline='') as f:
+        with open('./data/coordinate.csv', 'a', newline='') as f:
             writer = csv.writer(f)
             writer.writerow([idx, (x,y,-1)])
         idx += 1
